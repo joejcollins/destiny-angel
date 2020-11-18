@@ -1,0 +1,96 @@
+\newcommand{\NWtarget}[2]{#2}
+\newcommand{\NWlink}[2]{#2}
+\newcommand{\NWtxtMacroDefBy}{Fragment defined by}
+\newcommand{\NWtxtMacroRefIn}{Fragment referenced in}
+\newcommand{\NWtxtMacroNoRef}{Fragment never referenced}
+\newcommand{\NWtxtDefBy}{Defined by}
+\newcommand{\NWtxtRefIn}{Referenced in}
+\newcommand{\NWtxtNoRef}{Not referenced}
+\newcommand{\NWtxtFileDefBy}{File defined by}
+\newcommand{\NWtxtIdentDefinedIn}{defined in}
+\newcommand{\NWtxtIdentUsedIn}{used in}
+\newcommand{\NWtxtIdentUsers}{Users:}
+\newcommand{\NWtxtIdentsNotUsed}{never used}
+\newcommand{\NWtxtIdentsUsed}{Uses:}
+\newcommand{\NWsep}{${\diamond}$}
+\newcommand{\NWnotglobal}{(not defined globally)}
+\newcommand{\NWuseHyperlinks}{}
+\documentclass[a4paper, 12pt]{article}
+\usepackage{fullpage} % for 1.5 cm margins
+\renewcommand{\familydefault}{\sfdefault} % so it doesn't look like LaTeX
+\usepackage{helvet}
+\usepackage[british]{isodate}
+\usepackage{abstract}
+\renewcommand{\abstractname}{Overview}
+\raggedright
+
+\usepackage{parskip}
+
+\usepackage[%
+backref,%
+raiselinks,%
+pdfhighlight=/O,%
+pagebackref,%
+hyperfigures,%
+breaklinks,%
+colorlinks,%
+pdfpagemode=None,%
+pdfstartview=Fit,%
+]{hyperref}
+
+\title{Promethean Temperature Sensor}
+\author{Joe J Collins}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Libraries}
+
+Platform io
+
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap1}\raggedright\small
+\NWtarget{nuweb1a}{}\verb@"../src/shit.cpp"@\nobreak\ {\footnotesize{1a}}$\equiv$
+\vspace{-1ex}
+\begin{list}{}{\setlength{\leftmargin}{1em}} \item
+\mbox{}\verb@#include <Arduino.h>@\\
+\mbox{}\verb@@$\langle\,${\itshape libraries}\ {\footnotesize \NWlink{nuweb1b}{1b}}\,$\rangle\,$\verb@@\\
+\mbox{}{\NWsep}
+\end{list}
+\vspace{-1ex}
+\end{minipage}
+\end{flushleft}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Libraries}
+
+Notes
+
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap2}\raggedright\small
+\NWtarget{nuweb1b}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{1b}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{\setlength{\leftmargin}{1em}} \item
+\mbox{}\verb@// Include the libraries:@\\
+\mbox{}\verb@#include <Adafruit_Sensor.h>@\\
+\mbox{}\verb@#include <DHT.h>@\\
+\mbox{}\verb@#include <SPI.h>@\\
+\mbox{}\verb@#include <Ethernet.h>@\\
+\mbox{}{\NWsep}
+\end{list}
+\vspace{-1ex}
+\vspace{-1ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroRefIn\ \NWlink{nuweb1a}{1a}.
+\end{list}
+\end{minipage}
+\end{flushleft}
+
+
+
+\end{document}

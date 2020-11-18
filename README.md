@@ -1,2 +1,2 @@
 # destiny-angel
-Promethean temperature sensor
+Promethean Temperature Sensor
