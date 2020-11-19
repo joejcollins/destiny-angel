@@ -13,17 +13,13 @@
 
 \usepackage{parskip}
 
-\usepackage[%
-backref,%
-raiselinks,%
-pdfhighlight=/O,%
-pagebackref,%
-hyperfigures,%
-breaklinks,%
-colorlinks,%
-pdfpagemode=None,%
-pdfstartview=Fit,%
-]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 
 \title{Promethean Temperature Sensor}
 \author{Joe J Collins}
@@ -41,6 +37,8 @@ Monitoring with Prometheus
 no off the shelf monitoring.
 Temperature is important.
 
+No hassle with Wifi.
+
 \begin{description}
   \item[Start up time]
   \item[Maintenance]
@@ -48,7 +46,6 @@ Temperature is important.
   \item[Availability]
   \item[Support information] 
 \end{description}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Components}
@@ -61,7 +58,24 @@ Shopping list and details, with prices.
   \caption{Components}
 \end{figure}
 
+
+\begin{tabular}{ll}
+  \textbf{Component} & \textbf{Cost} \\ 
+  \hline
+  Arduino Uno Rev3, ATmega328P, CH340G Compatible Board & \pounds 5.79 \\
+  UK 9V AC/DC Power Supply Adapter Plug for Arduino Uno & \pounds 7.95 \\
+  Ethernet Shield LAN W5100 for Arduino Uno & \pounds 7.75 \\
+  DHT22 AM2302 Digital Temperature and Humidity Sensor & \pounds 6.90 \\
+  0.25 Watt Metal Film Resistor 10K Ohm & \pounds 0.99 \\
+  Uno Ethernet Shield Case & \pounds 10.36 \\
+  \hline
+  Total cost in November 2020 & \textbf{\pounds 39.74}  \\
+\end{tabular}
+
 \subsection{Sensor}
+
+AM2302 capacitive humidity sensing digital temperature and humidity module is one that contains the
+compound has been calibrated digital signal output of the temperature and humidity sensors. 
 
 @d configuration @{
   #define DHTPIN 2
@@ -91,6 +105,19 @@ Pull up resistor.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Programming}
+
+Rather than link up to a router
+
+\begin{itemize}
+  \item Assign a manual IP address to the laptop's ethernet connection say 10.0.21.1.
+  \item Subnet mask 255.255.255.0.
+  \item Assign a manual IP address to the Arduino's ethernet, say 10.0.21.211.
+  \item Subnet mask 255.255.255.0.
+  \item Leave the default Gateway empty.
+  \item Use an ethernet patch cable to link the two (since 100BaseT onwards it doesn't have to be a special cross over cable).
+  \item You should then be able to get your Arduino site up on http://192.168.0.2 from the laptop.
+\end{itemize}
+
 
 Platform io
 
@@ -141,15 +168,16 @@ Drivers on PC.
   Humidity: 56.30 % | Temperature: 22.20 C
   \end{verbatim}
   
-  This is the endpoint at \url{http://192.168.1.2/}.
+  This is the endpoint at \url{http://10.0.21.211/}.
   
   \begin{verbatim}
-  # HELP temperature is the last temperature reading in degrees celsius
-  # TYPE temp gauge
-  temperature 21.90
-  # HELP humidity is the last relative humidity reading as a percentage
-  # TYPE humidity gauge
-  humidity 54.90
+    > curl 10.0.21.211
+    # HELP temperature is the last temperature reading in degrees celsius
+    # TYPE temp gauge
+    temperature 23.30
+    # HELP humidity is the last relative humidity reading as a percentage
+    # TYPE humidity gauge
+    humidity 47.60
   \end{verbatim}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

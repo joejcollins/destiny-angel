@@ -20,8 +20,7 @@ DHT dht = DHT(DHTPIN, DHTTYPE);
 byte mac[] = {
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
 };
-IPAddress ip(192, 168, 1, 2);
-
+IPAddress ip(10, 0, 21, 211);
 // Initialize the Ethernet server library
 // with the IP address and port you want to use
 // (port 80 is default for HTTP):
