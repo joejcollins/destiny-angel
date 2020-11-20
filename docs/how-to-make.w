@@ -102,9 +102,15 @@ Pull up resistor.
 \end{figure}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Programming}
+
+Install 
+
+\begin{itemize}
+  \item VSCode
+  \item Platformio \url{https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide}
+\end{itemize}
 
 Rather than link up to a router
 
@@ -115,7 +121,7 @@ Rather than link up to a router
   \item Subnet mask 255.255.255.0.
   \item Leave the default Gateway empty.
   \item Use an ethernet patch cable to link the two (since 100BaseT onwards it doesn't have to be a special cross over cable).
-  \item You should then be able to get your Arduino site up on http://192.168.0.2 from the laptop.
+  \item You should then be able to get your Arduino site up on \url{http://192.168.0.2} from the laptop.
 \end{itemize}
 
 
@@ -180,6 +186,11 @@ Drivers on PC.
     humidity 47.60
   \end{verbatim}
 
+  \verb|docker-compose up|
+
+
+  
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Packaging}
 
@@ -188,8 +199,6 @@ Drivers on PC.
   \includegraphics[width=0.8\textwidth]{sensor-mount.jpg}
   \caption{Components for mounting the sensor}
 \end{figure}
-
-
 
 2.5 mm holes and 4 mm holes.
 

@@ -64,7 +64,6 @@ No hassle with Wifi.
   \item[Support information] 
 \end{description}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Components}
 
@@ -84,7 +83,7 @@ Shopping list and details, with prices.
   UK 9V AC/DC Power Supply Adapter Plug for Arduino Uno & \pounds 7.95 \\
   Ethernet Shield LAN W5100 for Arduino Uno & \pounds 7.75 \\
   DHT22 AM2302 Digital Temperature and Humidity Sensor & \pounds 6.90 \\
-  1/4W 0.25W Metal Film Resistor 10K Ohm & \pounds 0.99 \\
+  0.25 Watt Metal Film Resistor 10K Ohm & \pounds 0.99 \\
   Uno Ethernet Shield Case & \pounds 10.36 \\
   \hline
   Total cost in November 2020 & \textbf{\pounds 39.74}  \\
@@ -97,7 +96,7 @@ compound has been calibrated digital signal output of the temperature and humidi
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap1}\raggedright\small
-\NWtarget{nuweb2}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{2}}$\,\rangle\equiv$
+\NWtarget{nuweb3}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{3}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\verb@  #define DHTPIN 2@\\
@@ -133,9 +132,15 @@ Pull up resistor.
 \end{figure}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Programming}
+
+Install 
+
+\begin{itemize}
+  \item VSCode
+  \item Platformio \url{https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide}
+\end{itemize}
 
 Rather than link up to a router
 
@@ -146,7 +151,7 @@ Rather than link up to a router
   \item Subnet mask 255.255.255.0.
   \item Leave the default Gateway empty.
   \item Use an ethernet patch cable to link the two (since 100BaseT onwards it doesn't have to be a special cross over cable).
-  \item You should then be able to get your Arduino site up on http://192.168.0.2 from the laptop.
+  \item You should then be able to get your Arduino site up on \url{http://192.168.0.2} from the laptop.
 \end{itemize}
 
 
@@ -159,7 +164,7 @@ Platform io
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\verb@#include <Arduino.h>@\\
 \mbox{}\verb@@$\langle\,${\itshape libraries}\ {\footnotesize \NWlink{nuweb4b}{4b}}\,$\rangle\,$\verb@@\\
-\mbox{}\verb@@$\langle\,${\itshape configuration}\ {\footnotesize \NWlink{nuweb2}{2}}\,$\rangle\,$\verb@@\\
+\mbox{}\verb@@$\langle\,${\itshape configuration}\ {\footnotesize \NWlink{nuweb3}{3}}\,$\rangle\,$\verb@@\\
 \mbox{}\verb@void setup() @\\
 \mbox{}\verb@{@\\
 \mbox{}\verb@  @$\langle\,${\itshape setup}\ {\footnotesize (not found)}\,$\rangle\,$\verb@@\\
@@ -231,6 +236,8 @@ Drivers on PC.
     # TYPE humidity gauge
     humidity 47.60
   \end{verbatim}
+
+  \verb|docker run --name prometheus -d -p 127.0.0.1:9090:9090 prom/prometheus|
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Packaging}
