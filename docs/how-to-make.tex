@@ -23,7 +23,6 @@
 \graphicspath{ {imgs/} }
 \usepackage{float} % so the figures stay with the text
 
-
 \usepackage{abstract}
 \renewcommand{\abstractname}{Overview}
 \raggedright
@@ -39,30 +38,25 @@
 }
 
 \title{Promethean Temperature Sensor}
-\author{Joe J Collins}
+\author{Joe Collins}
 
 \begin{document}
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Problem}
 
-Monitoring with Prometheus
-no off the shelf monitoring.
-Temperature is important.
+A temperature sensor that can be monitoring using Prometheus (\url{https://prometheus.io/}).
 
-No hassle with Wifi.
-
-\begin{description}
-  \item[Start up time]
-  \item[Maintenance]
-  \item[Cost]
-  \item[Availability]
-  \item[Support information] 
-\end{description}
+Prometheus is our main system for monitoring system status,
+so it makes sense to have temperature sensors that can also be monitored using Prometheus.
+There doesn't appear to be anything available off the shelf.
+There are temperature monitors but some effort would be required to get 
+them to integrate with our Prometheus monitoring system.
+So we might as well build a bespoke temperature sensor
+that can be polled directly by Prometheus.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Components}
@@ -94,29 +88,9 @@ Shopping list and details, with prices.
 AM2302 capacitive humidity sensing digital temperature and humidity module is one that contains the
 compound has been calibrated digital signal output of the temperature and humidity sensors. 
 
-\begin{flushleft} \small
-\begin{minipage}{\linewidth}\label{scrap1}\raggedright\small
-\NWtarget{nuweb3}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{3}}$\,\rangle\equiv$
-\vspace{-1ex}
-\begin{list}{}{\setlength{\leftmargin}{1em}} \item
-\mbox{}\verb@  #define DHTPIN 2@\\
-\mbox{}\verb@  // Set DHT type, uncomment whatever type you're using!@\\
-\mbox{}\verb@  //#define DHTTYPE DHT11   // DHT 11 @\\
-\mbox{}\verb@  #define DHTTYPE DHT22   // DHT 22  (AM2302)@\\
-\mbox{}\verb@  //#define DHTTYPE DHT21   // DHT 21 (AM2301)@\\
-\mbox{}\verb@  // Initialize DHT sensor for normal 16mhz Arduino:@\\
-\mbox{}\verb@  DHT dht = DHT(DHTPIN, DHTTYPE);@\\
-\mbox{}{\NWsep}
-\end{list}
-\vspace{-1ex}
-\vspace{-1ex}
-\footnotesize
-\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
-\end{list}
-\end{minipage}
-\end{flushleft}
 
+
+\subsection{Sensor}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Wiring}
@@ -138,40 +112,42 @@ Pull up resistor.
 Install 
 
 \begin{itemize}
-  \item VSCode
-  \item Platformio \url{https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide}
+  \item VSCode \\
+  \url{https://code.visualstudio.com/}
+  \item Platformio \\
+  \url{https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide}
 \end{itemize}
 
-Rather than link up to a router
-
-\begin{itemize}
-  \item Assign a manual IP address to the laptop's ethernet connection say 10.0.21.1.
-  \item Subnet mask 255.255.255.0.
-  \item Assign a manual IP address to the Arduino's ethernet, say 10.0.21.211.
-  \item Subnet mask 255.255.255.0.
-  \item Leave the default Gateway empty.
-  \item Use an ethernet patch cable to link the two (since 100BaseT onwards it doesn't have to be a special cross over cable).
-  \item You should then be able to get your Arduino site up on \url{http://192.168.0.2} from the laptop.
-\end{itemize}
 
 
 Platform io
 
+Include serial for output to monitor
+
 \begin{flushleft} \small
-\begin{minipage}{\linewidth}\label{scrap2}\raggedright\small
+\begin{minipage}{\linewidth}\label{scrap1}\raggedright\small
 \NWtarget{nuweb4a}{}\verb@"../src/shit.cpp"@\nobreak\ {\footnotesize{4a}}$\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\verb@#include <Arduino.h>@\\
-\mbox{}\verb@@$\langle\,${\itshape libraries}\ {\footnotesize \NWlink{nuweb4b}{4b}}\,$\rangle\,$\verb@@\\
-\mbox{}\verb@@$\langle\,${\itshape configuration}\ {\footnotesize \NWlink{nuweb3}{3}}\,$\rangle\,$\verb@@\\
+\mbox{}\verb@@$\langle\,${\itshape libraries}\ {\footnotesize \NWlink{nuweb4b}{4b}},\ ...\,$\rangle\,$\verb@@\\
+\mbox{}\verb@@$\langle\,${\itshape configuration}\ {\footnotesize \NWlink{nuweb4c}{4c}},\ ...\,$\rangle\,$\verb@@\\
+\mbox{}\verb@@$\langle\,${\itshape functions}\ {\footnotesize \NWlink{nuweb5b}{5b}}\,$\rangle\,$\verb@@\\
+\mbox{}\verb@@\\
 \mbox{}\verb@void setup() @\\
 \mbox{}\verb@{@\\
-\mbox{}\verb@  @$\langle\,${\itshape setup}\ {\footnotesize (not found)}\,$\rangle\,$\verb@@\\
+\mbox{}\verb@  // Open serial communications and wait for the port to open.@\\
+\mbox{}\verb@  Serial.begin(9600);@\\
+\mbox{}\verb@  while (!Serial) @\\
+\mbox{}\verb@  {@\\
+\mbox{}\verb@    ; // Wait for serial port to connect (only needed for native USB ports).@\\
+\mbox{}\verb@  }@\\
+\mbox{}\verb@  @$\langle\,${\itshape setup}\ {\footnotesize \NWlink{nuweb5a}{5a}}\,$\rangle\,$\verb@@\\
 \mbox{}\verb@}@\\
+\mbox{}\verb@@\\
 \mbox{}\verb@void loop() @\\
 \mbox{}\verb@{@\\
-\mbox{}\verb@  @$\langle\,${\itshape loop}\ {\footnotesize (not found)}\,$\rangle\,$\verb@@\\
+\mbox{}\verb@  @$\langle\,${\itshape loop}\ {\footnotesize \NWlink{nuweb??}{??}}\,$\rangle\,$\verb@@\\
 \mbox{}\verb@}@\\
 \mbox{}{\NWsep}
 \end{list}
@@ -179,22 +155,76 @@ Platform io
 \end{minipage}
 \end{flushleft}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Libraries}
+\subsection{Sensor}
 
-Notes
+Why Adafruit library?
+
+Why DHT library?
+
+Serial Peripheral Interface (SPI) is a synchronous serial data protocol
+used by microcontrollers for communicating with peripheral devices quickly over short distances.
 
 \begin{flushleft} \small
-\begin{minipage}{\linewidth}\label{scrap3}\raggedright\small
+\begin{minipage}{\linewidth}\label{scrap2}\raggedright\small
 \NWtarget{nuweb4b}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{4b}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
-\mbox{}\verb@// Include the libraries:@\\
+\mbox{}\verb@// Sensor libraries:@\\
 \mbox{}\verb@#include <Adafruit_Sensor.h>@\\
 \mbox{}\verb@#include <DHT.h>@\\
 \mbox{}\verb@#include <SPI.h>@\\
-\mbox{}\verb@#include <Ethernet.h>@\\
+\mbox{}{\NWsep}
+\end{list}
+\vspace{-1ex}
+\vspace{-1ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroDefBy\ \NWlink{nuweb4b}{4b}, \NWlink{nuweb5c}{5c}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
+\end{list}
+\end{minipage}
+\end{flushleft}
+
+Pin and DHT type
+DHT11 cheaper and less precise probably would be just as good for our situation
+DHT21 (AM2301)
+
+Register the pin used see wiring.
+
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap3}\raggedright\small
+\NWtarget{nuweb4c}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{4c}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{\setlength{\leftmargin}{1em}} \item
+\mbox{}\verb@#define DHTPIN 2@\\
+\mbox{}\verb@#define DHTTYPE DHT22   // DHT 22  (AM2302)@\\
+\mbox{}\verb@// Initialize DHT sensor for normal 16mhz Arduino:@\\
+\mbox{}\verb@DHT dht = DHT(DHTPIN, DHTTYPE);@\\
+\mbox{}\verb@// globals to store readings@\\
+\mbox{}\verb@float temperature = 0;@\\
+\mbox{}\verb@float humidity = 0;@\\
+\mbox{}{\NWsep}
+\end{list}
+\vspace{-1ex}
+\vspace{-1ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroDefBy\ \NWlink{nuweb4c}{4c}, \NWlink{nuweb5d}{5d}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
+\end{list}
+\end{minipage}
+\end{flushleft}
+
+The sensor needs to begin, why?
+
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap4}\raggedright\small
+\NWtarget{nuweb5a}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{5a}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{\setlength{\leftmargin}{1em}} \item
+\mbox{}\verb@  Serial.println("Set up sensor");@\\
+\mbox{}\verb@  dht.begin();@\\
 \mbox{}{\NWsep}
 \end{list}
 \vspace{-1ex}
@@ -206,6 +236,123 @@ Notes
 \end{minipage}
 \end{flushleft}
 
+Set the values in the globals,
+could have passed stuff around.
+
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap5}\raggedright\small
+\NWtarget{nuweb5b}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{5b}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{\setlength{\leftmargin}{1em}} \item
+\mbox{}\verb@void readSensor()@\\
+\mbox{}\verb@{@\\
+\mbox{}\verb@  // Read the humidity in %:@\\
+\mbox{}\verb@  humidity = dht.readHumidity();@\\
+\mbox{}\verb@  // Read the temperature as Celsius:@\\
+\mbox{}\verb@  temperature = dht.readTemperature();@\\
+\mbox{}\verb@  // Check if any reads failed and exit early (to try again):@\\
+\mbox{}\verb@  if (isnan(humidity) || isnan(temperature)) @\\
+\mbox{}\verb@  {@\\
+\mbox{}\verb@    Serial.println("Failed to read from sensor");@\\
+\mbox{}\verb@    return;@\\
+\mbox{}\verb@  }@\\
+\mbox{}\verb@}@\\
+\mbox{}{\NWsep}
+\end{list}
+\vspace{-1ex}
+\vspace{-1ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
+\end{list}
+\end{minipage}
+\end{flushleft}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ethernet Client}
+
+aWOT is in version 3
+
+\verb|lasselukkari/aWOT@0.0.0-alpha+sha.bf07e6371c|
+
+
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap6}\raggedright\small
+\NWtarget{nuweb5c}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{5c}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{\setlength{\leftmargin}{1em}} \item
+\mbox{}\verb@// Ethernet shield@\\
+\mbox{}\verb@#include <Ethernet.h>@\\
+\mbox{}\verb@#include <aWOT.h>@\\
+\mbox{}{\NWsep}
+\end{list}
+\vspace{-1ex}
+\vspace{-1ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroDefBy\ \NWlink{nuweb4b}{4b}, \NWlink{nuweb5c}{5c}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
+\end{list}
+\end{minipage}
+\end{flushleft}
+
+
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap7}\raggedright\small
+\NWtarget{nuweb5d}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{5d}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{\setlength{\leftmargin}{1em}} \item
+\mbox{}\verb@// Enter a MAC address and IP address for your controller below.@\\
+\mbox{}\verb@// The IP address will be dependent on your local network:@\\
+\mbox{}\verb@byte mac[] = {@\\
+\mbox{}\verb@  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED@\\
+\mbox{}\verb@};@\\
+\mbox{}\verb@IPAddress ip(10, 0, 21, 211);@\\
+\mbox{}\verb@// Initialize the Ethernet server library@\\
+\mbox{}\verb@// with the IP address and port you want to use@\\
+\mbox{}\verb@// (port 80 is default for HTTP):@\\
+\mbox{}\verb@EthernetServer server(80);@\\
+\mbox{}\verb@Application app;@\\
+\mbox{}{\NWsep}
+\end{list}
+\vspace{-1ex}
+\vspace{-1ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroDefBy\ \NWlink{nuweb4c}{4c}, \NWlink{nuweb5d}{5d}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
+\end{list}
+\end{minipage}
+\end{flushleft}
+
+
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap8}\raggedright\small
+\NWtarget{nuweb??}{}$\langle\,${\itshape loop}\nobreak\ {\footnotesize{??}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{\setlength{\leftmargin}{1em}} \item
+\mbox{}\verb@  // Wait a couple of seconds between measurements.@\\
+\mbox{}\verb@  delay(2000);@\\
+\mbox{}\verb@  // Reading temperature or humidity takes about 250 milliseconds@\\
+\mbox{}\verb@  // Sensor readings may also be up to 2 seconds 'old'@\\
+\mbox{}\verb@  readSensor();@\\
+\mbox{}\verb@  serialPrintReadings();@\\
+\mbox{}\verb@  EthernetClient client = server.available();@\\
+\mbox{}\verb@  if (client.connected()) {@\\
+\mbox{}\verb@    app.process(&client);@\\
+\mbox{}\verb@    client.stop();@\\
+\mbox{}\verb@  }@\\
+\mbox{}{\NWsep}
+\end{list}
+\vspace{-1ex}
+\vspace{-1ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
+\end{list}
+\end{minipage}
+\end{flushleft}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Upload}
@@ -223,21 +370,41 @@ Drivers on PC.
   Sensor set up
   Humidity: 55.90 % | Temperature: 22.10 C
   Humidity: 56.30 % | Temperature: 22.20 C
-  \end{verbatim}
-  
-  This is the endpoint at \url{http://10.0.21.211/}.
-  
-  \begin{verbatim}
-    > curl 10.0.21.211
-    # HELP temperature is the last temperature reading in degrees celsius
-    # TYPE temp gauge
-    temperature 23.30
-    # HELP humidity is the last relative humidity reading as a percentage
-    # TYPE humidity gauge
-    humidity 47.60
-  \end{verbatim}
+\end{verbatim}
 
-  \verb|docker run --name prometheus -d -p 127.0.0.1:9090:9090 prom/prometheus|
+
+Rather than link up to a router
+
+\begin{itemize}
+  \item Assign a manual IP address to the laptop's ethernet connection say 10.0.21.1.
+  \item Subnet mask 255.255.255.0.
+  \item Assign a manual IP address to the Arduino's ethernet, say 10.0.21.211.
+  \item Subnet mask 255.255.255.0.
+  \item Leave the default Gateway empty.
+  \item Use an ethernet patch cable to link the two (since 100BaseT onwards it doesn't have to be a special cross over cable).
+  \item You should then be able to get your Arduino site up on \url{http://192.168.0.2} from the laptop.
+\end{itemize}
+  
+This is the endpoint at \url{http://10.0.21.211/metrics}.
+  
+\begin{verbatim}
+  > curl 10.0.21.211
+  # HELP temperature is the last temperature reading in degrees celsius
+  # TYPE temp gauge
+  temperature 23.30
+  # HELP humidity is the last relative humidity reading as a percentage
+  # TYPE humidity gauge
+  humidity 47.60
+\end{verbatim}
+
+\verb|docker-compose up|
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{graph.jpg}
+  \caption{Temperature graph}
+\end{figure}
+  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Packaging}
@@ -247,8 +414,6 @@ Drivers on PC.
   \includegraphics[width=0.8\textwidth]{sensor-mount.jpg}
   \caption{Components for mounting the sensor}
 \end{figure}
-
-
 
 2.5 mm holes and 4 mm holes.
 
