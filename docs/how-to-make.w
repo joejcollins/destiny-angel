@@ -41,7 +41,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Problem}
 
-A temperature sensor that can be monitoring using Prometheus (\url{https://prometheus.io/}).
+A temperature sensor that can be monitoring using \href{https://prometheus.io/}{Prometheus}.
 
 Prometheus is our main system for monitoring system status,
 so it makes sense to have temperature sensors that can also be monitored using Prometheus.
@@ -53,15 +53,6 @@ that can be polled directly by Prometheus.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Components}
-
-Shopping list and details, with prices.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\textwidth]{components.jpg}
-  \caption{Components}
-\end{figure}
-
 
 \begin{tabular}{ll}
   \textbf{Component} & \textbf{Cost} \\ 
@@ -76,21 +67,25 @@ Shopping list and details, with prices.
   Total cost in November 2020 & \textbf{\pounds 39.74}  \\
 \end{tabular}
 
-\subsection{Sensor}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{components.jpg}
+  \caption{Components}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Wiring the Sensor}
 
 AM2302 capacitive humidity sensing digital temperature and humidity module is one that contains the
 compound has been calibrated digital signal output of the temperature and humidity sensors. 
 
-
-
-\subsection{Sensor}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Wiring}
-
 Pull up resistor.
+pull-down resistor is a resistor used to ensure a known state for a signal
 
 
+You can also set the pin mode with \verb|pinMode("pin", INPUT_PULLUP);|
+
+Might be necessary for accurcacy gut not actually necessary for us.
 
 \begin{figure}[H]
   \centering
@@ -111,29 +106,23 @@ Install
   \url{https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide}
 \end{itemize}
 
-
-
-Platform io
+Platform io so you need the Arduino header.
 
 Include serial for output to monitor
+// Open serial communications and wait for the port to open.
+// Wait for serial port to connect (only needed for native USB ports).
 
 @o ../src/shit.cpp @{
 #include <Arduino.h>
 @< libraries @>
 @< configuration @>
 @< functions @>
-
 void setup() 
 {
-  // Open serial communications and wait for the port to open.
   Serial.begin(9600);
-  while (!Serial) 
-  {
-    ; // Wait for serial port to connect (only needed for native USB ports).
-  }
+  while (!Serial){;}
   @< setup @>
 }
-
 void loop() 
 {
   @< loop @>

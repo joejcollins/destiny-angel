@@ -44,12 +44,7 @@ void setup()
 {
   // Open serial communications and wait for the port to open.
   Serial.begin(9600);
-  while (!Serial) 
-  {
-    ; // Wait for serial port to connect (only needed for native USB ports).
-  }
   Serial.println("Set up webserver");
-
   // Start the Ethernet connection and the server:
   Ethernet.begin(mac, ip);
   // Check that the Ethernet hardware is present

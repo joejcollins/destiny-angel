@@ -58,7 +58,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The Problem}
 
-A temperature sensor that can be monitoring using Prometheus (\url{https://prometheus.io/}).
+A temperature sensor that can be monitoring using \href{https://prometheus.io/}{Prometheus}.
 
 Prometheus is our main system for monitoring system status,
 so it makes sense to have temperature sensors that can also be monitored using Prometheus.
@@ -70,8 +70,6 @@ that can be polled directly by Prometheus.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Components}
-
-Shopping list and details, with prices.
 
 \begin{figure}[H]
   \centering
@@ -106,8 +104,12 @@ compound has been calibrated digital signal output of the temperature and humidi
 \section{Wiring}
 
 Pull up resistor.
+pull-down resistor is a resistor used to ensure a known state for a signal
 
 
+You can also set the pin mode with \verb|pinMode("pin", INPUT_PULLUP);|
+
+Might be necessary for accurcacy gut not actually necessary for us.
 
 \begin{figure}[H]
   \centering
@@ -128,11 +130,11 @@ Install
   \url{https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide}
 \end{itemize}
 
-
-
-Platform io
+Platform io so you need the Arduino header.
 
 Include serial for output to monitor
+// Open serial communications and wait for the port to open.
+// Wait for serial port to connect (only needed for native USB ports).
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap1}\raggedright\small
@@ -143,18 +145,12 @@ Include serial for output to monitor
 \mbox{}\lstinline@@$\langle\,${\itshape libraries}\ {\footnotesize \NWlink{nuweb4b}{4b}},\ ...\,$\rangle\,$\verb@@\\
 \mbox{}\lstinline@@$\langle\,${\itshape configuration}\ {\footnotesize \NWlink{nuweb5a}{5a}},\ ...\,$\rangle\,$\verb@@\\
 \mbox{}\lstinline@@$\langle\,${\itshape functions}\ {\footnotesize \NWlink{nuweb5c}{5c}},\ ...\,$\rangle\,$\verb@@\\
-\mbox{}\lstinline@@\\
 \mbox{}\lstinline@void setup() @\\
 \mbox{}\lstinline@{@\\
-\mbox{}\lstinline@  // Open serial communications and wait for the port to open.@\\
 \mbox{}\lstinline@  Serial.begin(9600);@\\
-\mbox{}\lstinline@  while (!Serial) @\\
-\mbox{}\lstinline@  {@\\
-\mbox{}\lstinline@    ; // Wait for serial port to connect (only needed for native USB ports).@\\
-\mbox{}\lstinline@  }@\\
+\mbox{}\lstinline@  while (!Serial){;}@\\
 \mbox{}\lstinline@  @$\langle\,${\itshape setup}\ {\footnotesize \NWlink{nuweb5b}{5b}}\,$\rangle\,$\verb@@\\
 \mbox{}\lstinline@}@\\
-\mbox{}\lstinline@@\\
 \mbox{}\lstinline@void loop() @\\
 \mbox{}\lstinline@{@\\
 \mbox{}\lstinline@  @$\langle\,${\itshape loop}\ {\footnotesize \NWlink{nuweb7a}{7a}}\,$\rangle\,$\verb@@\\
