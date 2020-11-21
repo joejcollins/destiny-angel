@@ -20,6 +20,13 @@
     urlcolor=cyan,
 }
 
+\usepackage{listings}
+\usepackage{color}
+\lstset{ 
+  language=c++, % the language of the code
+  keywordstyle=\color{red} % keyword style
+}
+
 \title{Promethean Temperature Sensor}
 \author{Joe Collins}
 
@@ -270,7 +277,7 @@ void metricsCmd(Request &req, Response &res)
 
 Drivers on PC.
 
-
+read back doesn't always work.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Testing}

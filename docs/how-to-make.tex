@@ -1,5 +1,5 @@
-\newcommand{\NWtarget}[2]{#2}
-\newcommand{\NWlink}[2]{#2}
+\newcommand{\NWtarget}[2]{\hypertarget{#1}{#2}}
+\newcommand{\NWlink}[2]{\hyperlink{#1}{#2}}
 \newcommand{\NWtxtMacroDefBy}{Fragment defined by}
 \newcommand{\NWtxtMacroRefIn}{Fragment referenced in}
 \newcommand{\NWtxtMacroNoRef}{Fragment never referenced}
@@ -35,6 +35,13 @@
     linkcolor=blue,
     filecolor=magenta,      
     urlcolor=cyan,
+}
+
+\usepackage{listings}
+\usepackage{color}
+\lstset{ 
+  language=c++, % the language of the code
+  keywordstyle=\color{red} % keyword style
 }
 
 \title{Promethean Temperature Sensor}
@@ -129,26 +136,26 @@ Include serial for output to monitor
 \NWtarget{nuweb4a}{}\verb@"../src/shit.cpp"@\nobreak\ {\footnotesize{4a}}$\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
-\mbox{}\verb@#include <Arduino.h>@\\
-\mbox{}\verb@@$\langle\,${\itshape libraries}\ {\footnotesize \NWlink{nuweb4b}{4b}},\ ...\,$\rangle\,$\verb@@\\
-\mbox{}\verb@@$\langle\,${\itshape configuration}\ {\footnotesize \NWlink{nuweb4c}{4c}},\ ...\,$\rangle\,$\verb@@\\
-\mbox{}\verb@@$\langle\,${\itshape functions}\ {\footnotesize \NWlink{nuweb5b}{5b}}\,$\rangle\,$\verb@@\\
-\mbox{}\verb@@\\
-\mbox{}\verb@void setup() @\\
-\mbox{}\verb@{@\\
-\mbox{}\verb@  // Open serial communications and wait for the port to open.@\\
-\mbox{}\verb@  Serial.begin(9600);@\\
-\mbox{}\verb@  while (!Serial) @\\
-\mbox{}\verb@  {@\\
-\mbox{}\verb@    ; // Wait for serial port to connect (only needed for native USB ports).@\\
-\mbox{}\verb@  }@\\
-\mbox{}\verb@  @$\langle\,${\itshape setup}\ {\footnotesize \NWlink{nuweb5a}{5a}}\,$\rangle\,$\verb@@\\
-\mbox{}\verb@}@\\
-\mbox{}\verb@@\\
-\mbox{}\verb@void loop() @\\
-\mbox{}\verb@{@\\
-\mbox{}\verb@  @$\langle\,${\itshape loop}\ {\footnotesize \NWlink{nuweb??}{??}}\,$\rangle\,$\verb@@\\
-\mbox{}\verb@}@\\
+\mbox{}\lstinline@#include <Arduino.h>@\\
+\mbox{}\lstinline@@$\langle\,${\itshape libraries}\ {\footnotesize \NWlink{nuweb4b}{4b}},\ ...\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@@$\langle\,${\itshape configuration}\ {\footnotesize \NWlink{nuweb5a}{5a}},\ ...\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@@$\langle\,${\itshape functions}\ {\footnotesize \NWlink{nuweb5c}{5c}},\ ...\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@@\\
+\mbox{}\lstinline@void setup() @\\
+\mbox{}\lstinline@{@\\
+\mbox{}\lstinline@  // Open serial communications and wait for the port to open.@\\
+\mbox{}\lstinline@  Serial.begin(9600);@\\
+\mbox{}\lstinline@  while (!Serial) @\\
+\mbox{}\lstinline@  {@\\
+\mbox{}\lstinline@    ; // Wait for serial port to connect (only needed for native USB ports).@\\
+\mbox{}\lstinline@  }@\\
+\mbox{}\lstinline@  @$\langle\,${\itshape setup}\ {\footnotesize \NWlink{nuweb5b}{5b}}\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@}@\\
+\mbox{}\lstinline@@\\
+\mbox{}\lstinline@void loop() @\\
+\mbox{}\lstinline@{@\\
+\mbox{}\lstinline@  @$\langle\,${\itshape loop}\ {\footnotesize \NWlink{nuweb7a}{7a}}\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@}@\\
 \mbox{}{\NWsep}
 \end{list}
 \vspace{-1ex}
@@ -170,17 +177,17 @@ used by microcontrollers for communicating with peripheral devices quickly over 
 \NWtarget{nuweb4b}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{4b}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
-\mbox{}\verb@// Sensor libraries:@\\
-\mbox{}\verb@#include <Adafruit_Sensor.h>@\\
-\mbox{}\verb@#include <DHT.h>@\\
-\mbox{}\verb@#include <SPI.h>@\\
+\mbox{}\lstinline@// Sensor libraries:@\\
+\mbox{}\lstinline@#include <Adafruit_Sensor.h>@\\
+\mbox{}\lstinline@#include <DHT.h>@\\
+\mbox{}\lstinline@#include <SPI.h>@\\
 \mbox{}{\NWsep}
 \end{list}
 \vspace{-1ex}
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb4b}{4b}, \NWlink{nuweb5c}{5c}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb4b}{4b}, \NWlink{nuweb6b}{6b}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
 \end{list}
 \end{minipage}
@@ -194,23 +201,23 @@ Register the pin used see wiring.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap3}\raggedright\small
-\NWtarget{nuweb4c}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{4c}}$\,\rangle\equiv$
+\NWtarget{nuweb5a}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{5a}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
-\mbox{}\verb@#define DHTPIN 2@\\
-\mbox{}\verb@#define DHTTYPE DHT22   // DHT 22  (AM2302)@\\
-\mbox{}\verb@// Initialize DHT sensor for normal 16mhz Arduino:@\\
-\mbox{}\verb@DHT dht = DHT(DHTPIN, DHTTYPE);@\\
-\mbox{}\verb@// globals to store readings@\\
-\mbox{}\verb@float temperature = 0;@\\
-\mbox{}\verb@float humidity = 0;@\\
+\mbox{}\lstinline@// Sensor config@\\
+\mbox{}\lstinline@#define DHTPIN 2@\\
+\mbox{}\lstinline@#define DHTTYPE DHT22   // DHT 22  (AM2302)@\\
+\mbox{}\lstinline@DHT dht = DHT(DHTPIN, DHTTYPE); // Initialize DHT sensor for normal 16mhz Arduino:@\\
+\mbox{}\lstinline@// globals to store readings@\\
+\mbox{}\lstinline@float temperature = 0;@\\
+\mbox{}\lstinline@float humidity = 0;@\\
 \mbox{}{\NWsep}
 \end{list}
 \vspace{-1ex}
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb4c}{4c}, \NWlink{nuweb5d}{5d}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb5a}{5a}, \NWlink{nuweb6c}{6c}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
 \end{list}
 \end{minipage}
@@ -220,11 +227,11 @@ The sensor needs to begin, why?
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap4}\raggedright\small
-\NWtarget{nuweb5a}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{5a}}$\,\rangle\equiv$
+\NWtarget{nuweb5b}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{5b}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
-\mbox{}\verb@  Serial.println("Set up sensor");@\\
-\mbox{}\verb@  dht.begin();@\\
+\mbox{}\lstinline@  Serial.println("Set up sensor");@\\
+\mbox{}\lstinline@  dht.begin();@\\
 \mbox{}{\NWsep}
 \end{list}
 \vspace{-1ex}
@@ -241,33 +248,61 @@ could have passed stuff around.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap5}\raggedright\small
-\NWtarget{nuweb5b}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{5b}}$\,\rangle\equiv$
+\NWtarget{nuweb5c}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{5c}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
-\mbox{}\verb@void readSensor()@\\
-\mbox{}\verb@{@\\
-\mbox{}\verb@  // Read the humidity in %:@\\
-\mbox{}\verb@  humidity = dht.readHumidity();@\\
-\mbox{}\verb@  // Read the temperature as Celsius:@\\
-\mbox{}\verb@  temperature = dht.readTemperature();@\\
-\mbox{}\verb@  // Check if any reads failed and exit early (to try again):@\\
-\mbox{}\verb@  if (isnan(humidity) || isnan(temperature)) @\\
-\mbox{}\verb@  {@\\
-\mbox{}\verb@    Serial.println("Failed to read from sensor");@\\
-\mbox{}\verb@    return;@\\
-\mbox{}\verb@  }@\\
-\mbox{}\verb@}@\\
+\mbox{}\lstinline@void readSensor()@\\
+\mbox{}\lstinline@{@\\
+\mbox{}\lstinline@  // Read the humidity in %:@\\
+\mbox{}\lstinline@  humidity = dht.readHumidity();@\\
+\mbox{}\lstinline@  // Read the temperature as Celsius:@\\
+\mbox{}\lstinline@  temperature = dht.readTemperature();@\\
+\mbox{}\lstinline@  // Check if any reads failed and exit early (to try again):@\\
+\mbox{}\lstinline@  if (isnan(humidity) || isnan(temperature)) @\\
+\mbox{}\lstinline@  {@\\
+\mbox{}\lstinline@    Serial.println("Failed to read from sensor");@\\
+\mbox{}\lstinline@    return;@\\
+\mbox{}\lstinline@  }@\\
+\mbox{}\lstinline@}@\\
 \mbox{}{\NWsep}
 \end{list}
 \vspace{-1ex}
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroDefBy\ \NWlink{nuweb5c}{5c}, \NWlink{nuweb6a}{6a}, \NWlink{nuweb7b}{7b}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
 \end{list}
 \end{minipage}
 \end{flushleft}
 
+Not necessary in use but handy for development.
+
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap6}\raggedright\small
+\NWtarget{nuweb6a}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{6a}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{\setlength{\leftmargin}{1em}} \item
+\mbox{}\lstinline@void serialPrintReadings()@\\
+\mbox{}\lstinline@{@\\
+\mbox{}\lstinline@  Serial.print("Humidity: ");@\\
+\mbox{}\lstinline@  Serial.print(humidity);@\\
+\mbox{}\lstinline@  Serial.print(" % | ");@\\
+\mbox{}\lstinline@  Serial.print("Temperature: ");@\\
+\mbox{}\lstinline@  Serial.print(temperature);@\\
+\mbox{}\lstinline@  Serial.println(" C");@\\
+\mbox{}\lstinline@}@\\
+\mbox{}{\NWsep}
+\end{list}
+\vspace{-1ex}
+\vspace{-1ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroDefBy\ \NWlink{nuweb5c}{5c}, \NWlink{nuweb6a}{6a}, \NWlink{nuweb7b}{7b}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
+\end{list}
+\end{minipage}
+\end{flushleft}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ethernet Client}
@@ -278,49 +313,20 @@ aWOT is in version 3
 
 
 \begin{flushleft} \small
-\begin{minipage}{\linewidth}\label{scrap6}\raggedright\small
-\NWtarget{nuweb5c}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{5c}}$\,\rangle\equiv$
-\vspace{-1ex}
-\begin{list}{}{\setlength{\leftmargin}{1em}} \item
-\mbox{}\verb@// Ethernet shield@\\
-\mbox{}\verb@#include <Ethernet.h>@\\
-\mbox{}\verb@#include <aWOT.h>@\\
-\mbox{}{\NWsep}
-\end{list}
-\vspace{-1ex}
-\vspace{-1ex}
-\footnotesize
-\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb4b}{4b}, \NWlink{nuweb5c}{5c}.
-\item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
-\end{list}
-\end{minipage}
-\end{flushleft}
-
-
-\begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap7}\raggedright\small
-\NWtarget{nuweb5d}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{5d}}$\,\rangle\equiv$
+\NWtarget{nuweb6b}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{6b}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
-\mbox{}\verb@// Enter a MAC address and IP address for your controller below.@\\
-\mbox{}\verb@// The IP address will be dependent on your local network:@\\
-\mbox{}\verb@byte mac[] = {@\\
-\mbox{}\verb@  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED@\\
-\mbox{}\verb@};@\\
-\mbox{}\verb@IPAddress ip(10, 0, 21, 211);@\\
-\mbox{}\verb@// Initialize the Ethernet server library@\\
-\mbox{}\verb@// with the IP address and port you want to use@\\
-\mbox{}\verb@// (port 80 is default for HTTP):@\\
-\mbox{}\verb@EthernetServer server(80);@\\
-\mbox{}\verb@Application app;@\\
+\mbox{}\lstinline@// Ethernet shield@\\
+\mbox{}\lstinline@#include <Ethernet.h>@\\
+\mbox{}\lstinline@#include <aWOT.h>@\\
 \mbox{}{\NWsep}
 \end{list}
 \vspace{-1ex}
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb4c}{4c}, \NWlink{nuweb5d}{5d}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb4b}{4b}, \NWlink{nuweb6b}{6b}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
 \end{list}
 \end{minipage}
@@ -329,26 +335,87 @@ aWOT is in version 3
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap8}\raggedright\small
-\NWtarget{nuweb??}{}$\langle\,${\itshape loop}\nobreak\ {\footnotesize{??}}$\,\rangle\equiv$
+\NWtarget{nuweb6c}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{6c}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
-\mbox{}\verb@  // Wait a couple of seconds between measurements.@\\
-\mbox{}\verb@  delay(2000);@\\
-\mbox{}\verb@  // Reading temperature or humidity takes about 250 milliseconds@\\
-\mbox{}\verb@  // Sensor readings may also be up to 2 seconds 'old'@\\
-\mbox{}\verb@  readSensor();@\\
-\mbox{}\verb@  serialPrintReadings();@\\
-\mbox{}\verb@  EthernetClient client = server.available();@\\
-\mbox{}\verb@  if (client.connected()) {@\\
-\mbox{}\verb@    app.process(&client);@\\
-\mbox{}\verb@    client.stop();@\\
-\mbox{}\verb@  }@\\
+\mbox{}\lstinline@// Enter a MAC address and IP address for your controller below.@\\
+\mbox{}\lstinline@// The IP address will be dependent on your local network:@\\
+\mbox{}\lstinline@byte mac[] = {@\\
+\mbox{}\lstinline@  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED@\\
+\mbox{}\lstinline@};@\\
+\mbox{}\lstinline@IPAddress ip(10, 0, 21, 211);@\\
+\mbox{}\lstinline@// Initialize the Ethernet server library@\\
+\mbox{}\lstinline@// with the IP address and port you want to use@\\
+\mbox{}\lstinline@// (port 80 is default for HTTP):@\\
+\mbox{}\lstinline@EthernetServer server(80);@\\
+\mbox{}\lstinline@Application app;@\\
 \mbox{}{\NWsep}
 \end{list}
 \vspace{-1ex}
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroDefBy\ \NWlink{nuweb5a}{5a}, \NWlink{nuweb6c}{6c}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
+\end{list}
+\end{minipage}
+\end{flushleft}
+
+No need to over do the rate besides it takes abot about 250 milliseconds to poll the sensor.
+Prometheus normally scrapes every minute.
+
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap9}\raggedright\small
+\NWtarget{nuweb7a}{}$\langle\,${\itshape loop}\nobreak\ {\footnotesize{7a}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{\setlength{\leftmargin}{1em}} \item
+\mbox{}\lstinline@  // Wait a couple of seconds between measurements.@\\
+\mbox{}\lstinline@  delay(2000);@\\
+\mbox{}\lstinline@  // Reading temperature or humidity takes about 250 milliseconds@\\
+\mbox{}\lstinline@  // Sensor readings may also be up to 2 seconds 'old'@\\
+\mbox{}\lstinline@  readSensor();@\\
+\mbox{}\lstinline@  serialPrintReadings();@\\
+\mbox{}\lstinline@  EthernetClient client = server.available();@\\
+\mbox{}\lstinline@  if (client.connected()) {@\\
+\mbox{}\lstinline@    app.process(&client);@\\
+\mbox{}\lstinline@    client.stop();@\\
+\mbox{}\lstinline@  }@\\
+\mbox{}{\NWsep}
+\end{list}
+\vspace{-1ex}
+\vspace{-1ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
+\end{list}
+\end{minipage}
+\end{flushleft}
+
+Prometheus style metrics for scraping.
+
+\begin{flushleft} \small
+\begin{minipage}{\linewidth}\label{scrap10}\raggedright\small
+\NWtarget{nuweb7b}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{7b}}$\,\rangle\equiv$
+\vspace{-1ex}
+\begin{list}{}{\setlength{\leftmargin}{1em}} \item
+\mbox{}\lstinline@void metricsCmd(Request &req, Response &res)@\\
+\mbox{}\lstinline@{@\\
+\mbox{}\lstinline@  Serial.println("Request for metrics");@\\
+\mbox{}\lstinline@  res.set("Content-Type", "text/plain");@\\
+\mbox{}\lstinline@  res.print("# HELP temperature is the last temperature reading in degrees celsius\n");@\\
+\mbox{}\lstinline@  res.print("# TYPE temp gauge\n");@\\
+\mbox{}\lstinline@  res.print("temperature " + String(temperature) + "\n");@\\
+\mbox{}\lstinline@  res.print("# HELP humidity is the last relative humidity reading as a percentage\n");@\\
+\mbox{}\lstinline@  res.print("# TYPE humidity gauge\n");@\\
+\mbox{}\lstinline@  res.print("humidity " + String(humidity) + "\n");@\\
+\mbox{}\lstinline@}@\\
+\mbox{}{\NWsep}
+\end{list}
+\vspace{-1ex}
+\vspace{-1ex}
+\footnotesize
+\begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
+\item \NWtxtMacroDefBy\ \NWlink{nuweb5c}{5c}, \NWlink{nuweb6a}{6a}, \NWlink{nuweb7b}{7b}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb4a}{4a}.
 \end{list}
 \end{minipage}
@@ -359,7 +426,7 @@ aWOT is in version 3
 
 Drivers on PC.
 
-
+read back doesn't always work.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Testing}
