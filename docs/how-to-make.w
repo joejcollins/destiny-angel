@@ -22,9 +22,12 @@
 
 \usepackage{listings}
 \usepackage{color}
-\lstset{ 
-  language=c++, % the language of the code
-  keywordstyle=\color{red} % keyword style
+\lstset{language=C++,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{red}\ttfamily,
+        commentstyle=\color{green}\ttfamily,
+        morecomment=[l][\color{magenta}]{\#}
 }
 
 \title{Promethean Temperature Sensor}
