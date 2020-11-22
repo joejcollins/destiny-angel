@@ -37,22 +37,35 @@
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents
+\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The Problem}
+\section{Objective}
 
-A temperature sensor that can be monitoring using \href{https://prometheus.io/}{Prometheus}.
+A temperature sensor that can be scraped/polled using \href{https://prometheus.io/}{Prometheus}.
 
-Prometheus is our main system for monitoring system status,
-so it makes sense to have temperature sensors that can also be monitored using Prometheus.
+Prometheus is excellent for monitoring server metrics,
+so it makes sense to use it to monitor other metrics such as temperature and humidity.
 There doesn't appear to be anything available off the shelf.
 There are temperature monitors but some effort would be required to get 
-them to integrate with our Prometheus monitoring system.
+them to integrate with Prometheus.
 So we might as well build a bespoke temperature sensor
-that can be polled directly by Prometheus.
+that can be scraped/polled directly by Prometheus.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{prometheus.png}
+  \caption{Prometheus scraping sensors}
+\end{figure}
+
+With Prometheus scraping the temperature sensors,
+a web browser can be used to few graphs of the scraped data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Components}
+
+Each sensor is an Arduino microcontroller with a temperature sensore attached,
+total cost around \pounds 40.
 
 \begin{tabular}{ll}
   \textbf{Component} & \textbf{Cost} \\ 
@@ -75,17 +88,23 @@ that can be polled directly by Prometheus.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Wiring the Sensor}
+\label{sec:wiring}
 
-AM2302 capacitive humidity sensing digital temperature and humidity module is one that contains the
-compound has been calibrated digital signal output of the temperature and humidity sensors. 
+The sensor is a DHT22 AM2302 capacitive humidity sensing digital temperature and humidity module.
+It is has a calibrated digital signal output of the temperature and humidity sensors.
+Other sensors are available such as the cheaper DHT11,
+but supposedly it is less sensitive and less durable.
+Whilst sensitivity is not important
+durability probably is.
 
-Pull up resistor.
-pull-down resistor is a resistor used to ensure a known state for a signal
+The sensor is wired with a pull up resistor.
+This ensures that the signal wire has a small but consistent current,
+so it is less susceptible to electrical interference.
+In theory you can also set the pin mode with \verb|pinMode("pin", INPUT_PULLUP);|
+to use a built in pull up resistor.
 
-
-You can also set the pin mode with \verb|pinMode("pin", INPUT_PULLUP);|
-
-Might be necessary for accurcacy gut not actually necessary for us.
+The sensor works without the pull up resistor but is probably less accurate
+(though I haven't tested it).
 
 \begin{figure}[H]
   \centering
@@ -93,11 +112,10 @@ Might be necessary for accurcacy gut not actually necessary for us.
   \caption{Wiring diagram with pull up resistor}
 \end{figure}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Programming}
 
-Install 
+Tooling: 
 
 \begin{itemize}
   \item VSCode \\
@@ -106,11 +124,11 @@ Install
   \url{https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide}
 \end{itemize}
 
-Platform io so you need the Arduino header.
-
-Include serial for output to monitor
-// Open serial communications and wait for the port to open.
-// Wait for serial port to connect (only needed for native USB ports).
+All Arduino programs have the same format with a \verb|void setup()| and \verb|void loop()| functions.
+The \verb|loop()| runs continuously and the \verb|setup()| is run
+when the Arduino is turned on
+or
+when the reset button (red button near the USB socket) is press.
 
 @o ../src/shit.cpp @{
 #include <Arduino.h>
@@ -129,14 +147,24 @@ void loop()
 }
 @}
 
+Since we're using Platformio we need the Arduino header (\verb|<Arduino.h>|).
+For normal Arduino programs it is not required.
+
+It's useful to be able to connect to the Arduino over the USB cable,
+so the \verb|setup()| opens 
+
+Include serial for output to monitor serial communications and wait for the port to open.
+Waiting for the serial port to connect is only needed for native USB ports.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Sensor}
 
-Why Adafruit library?
+To interact with the DHT22 sensor we need specific drivers (\verb|<DHT.h>|),
+which rely on the Adafruit Unified Sensor Driver (\verb|<Adafruit_Sensor.h>|),
+The Adafruit Unified Sensor Driver is an abstraction layer
+which makes creating reliable drivers is easier. 
 
-Why DHT library?
-
-Serial Peripheral Interface (SPI) is a synchronous serial data protocol
+The Serial Peripheral Interface (\verb|<SPI.h>|) is a synchronous serial data protocol
 used by microcontrollers for communicating with peripheral devices quickly over short distances.
 
 @d libraries @{
@@ -146,23 +174,25 @@ used by microcontrollers for communicating with peripheral devices quickly over 
 #include <SPI.h>
 @}
 
-Pin and DHT type
-DHT11 cheaper and less precise probably would be just as good for our situation
-DHT21 (AM2301)
-
-Register the pin used see wiring.
+The sensor communicates using pin 2 (see \hyperref[sec:wiring]{wiring})
+and
+the sensor type need to be initialized.
+The temperature and humidity
+are stored in global variables
+since they'll be used by pretty much every part of the program.
 
 @d configuration @{
-// Sensor config
 #define DHTPIN 2
-#define DHTTYPE DHT22   // DHT 22  (AM2302)
-DHT dht = DHT(DHTPIN, DHTTYPE); // Initialize DHT sensor for normal 16mhz Arduino:
-// globals to store readings
+#define DHTTYPE DHT22
+DHT dht = DHT(DHTPIN, DHTTYPE);
 float temperature = 0;
 float humidity = 0;
 @}
 
-The sensor needs to begin, why?
+The sensor needs to \verb|begin()|.
+Formerly this method as used to pass in parameters relating the the speed of the Arduino.
+Now the sensor automatically adapts
+but \verb|begin()| is still needed.
 
 @d setup @{
   Serial.println("Set up sensor");
@@ -171,13 +201,15 @@ The sensor needs to begin, why?
 
 Set the values in the globals,
 could have passed stuff around.
+Read the humidity as a percentage
+Read the temperature as Celsius:
 
 @d functions @{
 void readSensor()
 {
-  // Read the humidity in %:
+
   humidity = dht.readHumidity();
-  // Read the temperature as Celsius:
+
   temperature = dht.readTemperature();
   // Check if any reads failed and exit early (to try again):
   if (isnan(humidity) || isnan(temperature)) 
