@@ -46,7 +46,6 @@
 *.ind
 
 # PDF and DVI output - usually a bad idea to keep this in Git
-*.pdf
 *.dvi
 
 # Latexmk
