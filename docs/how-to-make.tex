@@ -89,12 +89,12 @@ total cost around \pounds 40.
   \hline
   Arduino Uno Rev3, ATmega328P, CH340G Compatible Board & \pounds 5.79 \\
   UK 9V AC/DC Power Supply Adapter Plug for Arduino Uno & \pounds 7.95 \\
-  Ethernet Shield LAN W5100 for Arduino Uno & \pounds 7.75 \\
-  DHT22 AM2302 Digital Temperature and Humidity Sensor & \pounds 6.90 \\
-  0.25 Watt Metal Film Resistor 10k Ohm & \pounds 0.99 \\
-  Uno Ethernet Shield Case & \pounds 10.36 \\
+  Ethernet Shield LAN W5100 for Arduino Uno             & \pounds 7.75 \\
+  DHT22 AM2302 Digital Temperature and Humidity Sensor  & \pounds 6.90 \\
+  0.25 Watt Metal Film Resistor 10k Ohm                 & \pounds 0.99 \\
+  Uno Ethernet Shield Case                              & \pounds 10.36 \\
   \hline
-  Total cost in November 2020 & \textbf{\pounds 39.74}  \\
+  Total cost in November 2020                   & \textbf{\pounds 39.74}  \\
 \end{tabular}
 
 \begin{figure}[H]
@@ -159,22 +159,26 @@ when the reset button (red button near the USB socket) is pressed.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap1}\raggedright\small
-\NWtarget{nuweb5}{}\verb@"../src/main.cpp"@\nobreak\ {\footnotesize{5}}$\equiv$
+\NWtarget{nuweb5a}{}\verb@"../src/main.cpp"@\nobreak\ {\footnotesize{5a}}$\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@#include <Arduino.h>@\\
-\mbox{}\lstinline@@$\langle\,${\itshape libraries}\ {\footnotesize \NWlink{nuweb6a}{6a}},\ ...\,$\rangle\,$\verb@@\\
-\mbox{}\lstinline@@$\langle\,${\itshape configuration}\ {\footnotesize \NWlink{nuweb6b}{6b}},\ ...\,$\rangle\,$\verb@@\\
-\mbox{}\lstinline@@$\langle\,${\itshape functions}\ {\footnotesize \NWlink{nuweb7a}{7a}},\ ...\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@@$\langle\,${\itshape libraries}\ {\footnotesize \NWlink{nuweb5b}{5b}},\ ...\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@/*** Configuration ***/@\\
+\mbox{}\lstinline@@$\langle\,${\itshape configuration}\ {\footnotesize \NWlink{nuweb6a}{6a}},\ ...\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@/*** Functions ***/@\\
+\mbox{}\lstinline@@$\langle\,${\itshape functions}\ {\footnotesize \NWlink{nuweb6c}{6c}},\ ...\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@/*** Setup ***/@\\
 \mbox{}\lstinline@void setup() @\\
 \mbox{}\lstinline@{@\\
 \mbox{}\lstinline@  Serial.begin(9600);@\\
 \mbox{}\lstinline@  while (!Serial){;}@\\
-\mbox{}\lstinline@  @$\langle\,${\itshape setup}\ {\footnotesize \NWlink{nuweb6c}{6c}},\ ...\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@  @$\langle\,${\itshape setup}\ {\footnotesize \NWlink{nuweb6b}{6b}},\ ...\,$\rangle\,$\verb@@\\
 \mbox{}\lstinline@}@\\
+\mbox{}\lstinline@/*** Loop ***/@\\
 \mbox{}\lstinline@void loop() @\\
 \mbox{}\lstinline@{@\\
-\mbox{}\lstinline@  @$\langle\,${\itshape loop}\ {\footnotesize \NWlink{nuweb9c}{9c}}\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@  @$\langle\,${\itshape loop}\ {\footnotesize \NWlink{nuweb8c}{8c}}\,$\rangle\,$\verb@@\\
 \mbox{}\lstinline@}@\\
 \mbox{}{\NWsep}
 \end{list}
@@ -202,7 +206,7 @@ used by microcontrollers for communicating with peripheral devices quickly over 
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap2}\raggedright\small
-\NWtarget{nuweb6a}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{6a}}$\,\rangle\equiv$
+\NWtarget{nuweb5b}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{5b}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@#include <Adafruit_Sensor.h>@\\
@@ -214,8 +218,8 @@ used by microcontrollers for communicating with peripheral devices quickly over 
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6a}{6a}, \NWlink{nuweb8a}{8a}.
-\item \NWtxtMacroRefIn\ \NWlink{nuweb5}{5}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb5b}{5b}, \NWlink{nuweb7a}{7a}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
 \end{flushleft}
@@ -229,7 +233,7 @@ since they'll be used by pretty much every part of the program.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap3}\raggedright\small
-\NWtarget{nuweb6b}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{6b}}$\,\rangle\equiv$
+\NWtarget{nuweb6a}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{6a}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@#define DHTPIN 2@\\
@@ -243,8 +247,8 @@ since they'll be used by pretty much every part of the program.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6b}{6b}, \NWlink{nuweb8b}{8b}.
-\item \NWtxtMacroRefIn\ \NWlink{nuweb5}{5}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6a}{6a}, \NWlink{nuweb7b}{7b}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
 \end{flushleft}
@@ -256,7 +260,7 @@ but \verb|begin()| is still needed.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap4}\raggedright\small
-\NWtarget{nuweb6c}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{6c}}$\,\rangle\equiv$
+\NWtarget{nuweb6b}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{6b}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@Serial.println("Set up sensor");@\\
@@ -267,8 +271,8 @@ but \verb|begin()| is still needed.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}, \NWlink{nuweb8c}{8c}, \NWlink{nuweb9a}{9a}.
-\item \NWtxtMacroRefIn\ \NWlink{nuweb5}{5}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6b}{6b}, \NWlink{nuweb7c}{7c}, \NWlink{nuweb8a}{8a}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
 \end{flushleft}
@@ -286,7 +290,7 @@ until the Arduino is reset.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap5}\raggedright\small
-\NWtarget{nuweb7a}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{7a}}$\,\rangle\equiv$
+\NWtarget{nuweb6c}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{6c}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@void readSensor()@\\
@@ -305,8 +309,8 @@ until the Arduino is reset.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb7a}{7a}\NWlink{nuweb7b}{b}, \NWlink{nuweb9b}{9b}.
-\item \NWtxtMacroRefIn\ \NWlink{nuweb5}{5}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}\NWlink{nuweb6d}{d}, \NWlink{nuweb8b}{8b}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
 \end{flushleft}
@@ -317,7 +321,7 @@ However, during development it is handy to be able to see what is going on.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap6}\raggedright\small
-\NWtarget{nuweb7b}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{7b}}$\,\rangle\equiv$
+\NWtarget{nuweb6d}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{6d}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@void serialPrintReadings()@\\
@@ -335,8 +339,8 @@ However, during development it is handy to be able to see what is going on.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb7a}{7a}\NWlink{nuweb7b}{b}, \NWlink{nuweb9b}{9b}.
-\item \NWtxtMacroRefIn\ \NWlink{nuweb5}{5}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}\NWlink{nuweb6d}{d}, \NWlink{nuweb8b}{8b}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
 \end{flushleft}
@@ -359,7 +363,7 @@ which is curious since the rest of the meta data indicates that it is version 3.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap7}\raggedright\small
-\NWtarget{nuweb8a}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{8a}}$\,\rangle\equiv$
+\NWtarget{nuweb7a}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{7a}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@#include <Ethernet.h>@\\
@@ -370,8 +374,8 @@ which is curious since the rest of the meta data indicates that it is version 3.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6a}{6a}, \NWlink{nuweb8a}{8a}.
-\item \NWtxtMacroRefIn\ \NWlink{nuweb5}{5}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb5b}{5b}, \NWlink{nuweb7a}{7a}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
 \end{flushleft}
@@ -385,7 +389,7 @@ as global variables since the \verb|loop()| makes repeated use of them.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap8}\raggedright\small
-\NWtarget{nuweb8b}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{8b}}$\,\rangle\equiv$
+\NWtarget{nuweb7b}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{7b}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@byte mac[] = {@\\
@@ -400,8 +404,8 @@ as global variables since the \verb|loop()| makes repeated use of them.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6b}{6b}, \NWlink{nuweb8b}{8b}.
-\item \NWtxtMacroRefIn\ \NWlink{nuweb5}{5}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6a}{6a}, \NWlink{nuweb7b}{7b}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
 \end{flushleft}
@@ -412,7 +416,7 @@ and confirm that it is present and working.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap9}\raggedright\small
-\NWtarget{nuweb8c}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{8c}}$\,\rangle\equiv$
+\NWtarget{nuweb7c}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{7c}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@Ethernet.begin(mac, ip);@\\
@@ -433,8 +437,8 @@ and confirm that it is present and working.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}, \NWlink{nuweb8c}{8c}, \NWlink{nuweb9a}{9a}.
-\item \NWtxtMacroRefIn\ \NWlink{nuweb5}{5}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6b}{6b}, \NWlink{nuweb7c}{7c}, \NWlink{nuweb8a}{8a}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
 \end{flushleft}
@@ -445,7 +449,7 @@ However they both result in the same output provided by \verb|metricsCmd|
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap10}\raggedright\small
-\NWtarget{nuweb9a}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{9a}}$\,\rangle\equiv$
+\NWtarget{nuweb8a}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{8a}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@app.get("/", &metricsCmd);@\\
@@ -456,8 +460,8 @@ However they both result in the same output provided by \verb|metricsCmd|
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}, \NWlink{nuweb8c}{8c}, \NWlink{nuweb9a}{9a}.
-\item \NWtxtMacroRefIn\ \NWlink{nuweb5}{5}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6b}{6b}, \NWlink{nuweb7c}{7c}, \NWlink{nuweb8a}{8a}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
 \end{flushleft}
@@ -470,7 +474,7 @@ for values that increase.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap11}\raggedright\small
-\NWtarget{nuweb9b}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{9b}}$\,\rangle\equiv$
+\NWtarget{nuweb8b}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{8b}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@void metricsCmd(Request &req, Response &res)@\\
@@ -490,8 +494,8 @@ for values that increase.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb7a}{7a}\NWlink{nuweb7b}{b}, \NWlink{nuweb9b}{9b}.
-\item \NWtxtMacroRefIn\ \NWlink{nuweb5}{5}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}\NWlink{nuweb6d}{d}, \NWlink{nuweb8b}{8b}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
 \end{flushleft}
@@ -504,7 +508,7 @@ before the web server can respond.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap12}\raggedright\small
-\NWtarget{nuweb9c}{}$\langle\,${\itshape loop}\nobreak\ {\footnotesize{9c}}$\,\rangle\equiv$
+\NWtarget{nuweb8c}{}$\langle\,${\itshape loop}\nobreak\ {\footnotesize{8c}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@  delay(2000);@\\
@@ -521,7 +525,7 @@ before the web server can respond.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroRefIn\ \NWlink{nuweb5}{5}.
+\item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
 \end{flushleft}

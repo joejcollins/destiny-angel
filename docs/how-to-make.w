@@ -72,12 +72,12 @@ total cost around \pounds 40.
   \hline
   Arduino Uno Rev3, ATmega328P, CH340G Compatible Board & \pounds 5.79 \\
   UK 9V AC/DC Power Supply Adapter Plug for Arduino Uno & \pounds 7.95 \\
-  Ethernet Shield LAN W5100 for Arduino Uno & \pounds 7.75 \\
-  DHT22 AM2302 Digital Temperature and Humidity Sensor & \pounds 6.90 \\
-  0.25 Watt Metal Film Resistor 10k Ohm & \pounds 0.99 \\
-  Uno Ethernet Shield Case & \pounds 10.36 \\
+  Ethernet Shield LAN W5100 for Arduino Uno             & \pounds 7.75 \\
+  DHT22 AM2302 Digital Temperature and Humidity Sensor  & \pounds 6.90 \\
+  0.25 Watt Metal Film Resistor 10k Ohm                 & \pounds 0.99 \\
+  Uno Ethernet Shield Case                              & \pounds 10.36 \\
   \hline
-  Total cost in November 2020 & \textbf{\pounds 39.74}  \\
+  Total cost in November 2020                   & \textbf{\pounds 39.74}  \\
 \end{tabular}
 
 \begin{figure}[H]
@@ -143,14 +143,18 @@ when the reset button (red button near the USB socket) is pressed.
 @o ../src/main.cpp @{
 #include <Arduino.h>
 @< libraries @>
+/*** Configuration ***/
 @< configuration @>
+/*** Functions ***/
 @< functions @>
+/*** Setup ***/
 void setup() 
 {
   Serial.begin(9600);
   while (!Serial){;}
   @< setup @>
 }
+/*** Loop ***/
 void loop() 
 {
   @< loop @>

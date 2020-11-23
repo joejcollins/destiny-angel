@@ -4,6 +4,7 @@
 #include <SPI.h>
 #include <Ethernet.h>
 #include <aWOT.h>
+/*** Configuration ***/
 #define DHTPIN 2
 #define DHTTYPE DHT22
 DHT dht = DHT(DHTPIN, DHTTYPE);
@@ -15,6 +16,7 @@ byte mac[] = {
 IPAddress ip(10, 0, 21, 211);
 EthernetServer server(80);
 Application app;
+/*** Functions ***/
 void readSensor()
 {
   humidity = dht.readHumidity();
@@ -45,6 +47,7 @@ void metricsCmd(Request &req, Response &res)
   res.print("# TYPE humidity gauge\n");
   res.print("humidity " + String(humidity) + "\n");
 }
+/*** Setup ***/
 void setup()
 {
   Serial.begin(9600);
@@ -66,6 +69,7 @@ void setup()
   app.get("/", &metricsCmd);
   app.get("/metrics", &metricsCmd);
 }
+/*** Loop ***/
 void loop()
 {
     delay(2000);
