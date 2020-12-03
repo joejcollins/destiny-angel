@@ -307,12 +307,29 @@ if (Ethernet.linkStatus() == LinkOFF) {
 @}
 
 Two routes are provided,
-one to `/' and one to `/metrics'.
-However they both result in the same output provided by \verb|metricsCmd|
+one to `/' for a web page and one to `/metrics' for the Prometheus metrics.
 
 @d setup @{
-app.get("/", &metricsCmd);
+app.get("/", &indexCmd);
 app.get("/metrics", &metricsCmd);
+@}
+
+The web page is as simple as can be but refreshes at regular intervals to show the temperature.
+
+@d functions @{
+void indexCmd(Request &req, Response &res)
+{
+  Serial.println("Request for index");
+  res.set("Content-Type", "text/html");
+  res.println("<html>");
+  res.println("<head>");
+  res.println("  <meta http-equiv=\"refresh\" content=\"5\">");
+  res.println("</head>");
+  res.println("<body>");
+  res.println("  <H1>Temp: " + String(temperature) + "</p>");
+  res.println("</body>");
+  res.println("</html>");
+}
 @}
 
 Prometheus has a particular style for showing metrics ready for scraping.

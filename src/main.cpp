@@ -36,6 +36,19 @@ void serialPrintReadings()
   Serial.print(temperature);
   Serial.println(" C");
 }
+void indexCmd(Request &req, Response &res)
+{
+  Serial.println("Request for index");
+  res.set("Content-Type", "text/html");
+  res.println("<html>");
+  res.println("<head>");
+  res.println("  <meta http-equiv=\"refresh\" content=\"5\">");
+  res.println("</head>");
+  res.println("<body>");
+  res.println("  <H1>Temp: " + String(temperature) + "</p>");
+  res.println("</body>");
+  res.println("</html>");
+}
 void metricsCmd(Request &req, Response &res)
 {
   Serial.println("Request for metrics");
@@ -66,7 +79,7 @@ void setup()
   if (Ethernet.linkStatus() == LinkOFF) {
     Serial.println("Ethernet cable is not connected.");
   }
-  app.get("/", &metricsCmd);
+  app.get("/", &indexCmd);
   app.get("/metrics", &metricsCmd);
 }
 /*** Loop ***/
