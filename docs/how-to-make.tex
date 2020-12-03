@@ -151,7 +151,7 @@ Tooling:
   \url{https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide}
 \end{itemize}
 
-All Arduino programs have the same format with a \verb|setup()| and \verb|loop()| functions.
+All Arduino programs have the same format with \verb|setup()| and \verb|loop()| functions.
 The \verb|loop()| runs continuously and the \verb|setup()| is run
 when the Arduino is turned on
 or
@@ -178,7 +178,7 @@ when the reset button (red button near the USB socket) is pressed.
 \mbox{}\lstinline@/*** Loop ***/@\\
 \mbox{}\lstinline@void loop() @\\
 \mbox{}\lstinline@{@\\
-\mbox{}\lstinline@  @$\langle\,${\itshape loop}\ {\footnotesize \NWlink{nuweb8c}{8c}}\,$\rangle\,$\verb@@\\
+\mbox{}\lstinline@  @$\langle\,${\itshape loop}\ {\footnotesize \NWlink{nuweb9}{9}}\,$\rangle\,$\verb@@\\
 \mbox{}\lstinline@}@\\
 \mbox{}{\NWsep}
 \end{list}
@@ -218,7 +218,7 @@ used by microcontrollers for communicating with peripheral devices quickly over 
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb5b}{5b}, \NWlink{nuweb7a}{7a}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb5b}{5b}, \NWlink{nuweb7b}{7b}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
@@ -247,7 +247,7 @@ since they'll be used by pretty much every part of the program.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6a}{6a}, \NWlink{nuweb7b}{7b}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6a}{6a}, \NWlink{nuweb7c}{7c}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
@@ -271,7 +271,7 @@ but \verb|begin()| is still needed.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6b}{6b}, \NWlink{nuweb7c}{7c}, \NWlink{nuweb8a}{8a}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6b}{6b}, \NWlink{nuweb8a}{8a}\NWlink{nuweb8b}{b}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
@@ -309,7 +309,7 @@ until the Arduino is reset.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}\NWlink{nuweb6d}{d}, \NWlink{nuweb8b}{8b}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}, \NWlink{nuweb7a}{7a}, \NWlink{nuweb8c}{8c}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
@@ -321,7 +321,7 @@ However, during development it is handy to be able to see what is going on.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap6}\raggedright\small
-\NWtarget{nuweb6d}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{6d}}$\,\rangle\equiv$
+\NWtarget{nuweb7a}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{7a}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@void serialPrintReadings()@\\
@@ -339,7 +339,7 @@ However, during development it is handy to be able to see what is going on.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}\NWlink{nuweb6d}{d}, \NWlink{nuweb8b}{8b}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}, \NWlink{nuweb7a}{7a}, \NWlink{nuweb8c}{8c}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
@@ -363,7 +363,7 @@ which is curious since the rest of the meta data indicates that it is version 3.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap7}\raggedright\small
-\NWtarget{nuweb7a}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{7a}}$\,\rangle\equiv$
+\NWtarget{nuweb7b}{}$\langle\,${\itshape libraries}\nobreak\ {\footnotesize{7b}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@#include <Ethernet.h>@\\
@@ -374,7 +374,7 @@ which is curious since the rest of the meta data indicates that it is version 3.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb5b}{5b}, \NWlink{nuweb7a}{7a}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb5b}{5b}, \NWlink{nuweb7b}{7b}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
@@ -389,13 +389,13 @@ as global variables since the \verb|loop()| makes repeated use of them.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap8}\raggedright\small
-\NWtarget{nuweb7b}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{7b}}$\,\rangle\equiv$
+\NWtarget{nuweb7c}{}$\langle\,${\itshape configuration}\nobreak\ {\footnotesize{7c}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@byte mac[] = {@\\
 \mbox{}\lstinline@  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED@\\
 \mbox{}\lstinline@};@\\
-\mbox{}\lstinline@IPAddress ip(10, 0, 21, 211);@\\
+\mbox{}\lstinline@IPAddress ip(10, 0, 21, 212);@\\
 \mbox{}\lstinline@EthernetServer server(80);@\\
 \mbox{}\lstinline@Application app;@\\
 \mbox{}{\NWsep}
@@ -404,7 +404,7 @@ as global variables since the \verb|loop()| makes repeated use of them.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6a}{6a}, \NWlink{nuweb7b}{7b}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6a}{6a}, \NWlink{nuweb7c}{7c}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
@@ -416,7 +416,7 @@ and confirm that it is present and working.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap9}\raggedright\small
-\NWtarget{nuweb7c}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{7c}}$\,\rangle\equiv$
+\NWtarget{nuweb8a}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{8a}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@Ethernet.begin(mac, ip);@\\
@@ -437,7 +437,7 @@ and confirm that it is present and working.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6b}{6b}, \NWlink{nuweb7c}{7c}, \NWlink{nuweb8a}{8a}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6b}{6b}, \NWlink{nuweb8a}{8a}\NWlink{nuweb8b}{b}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
@@ -449,7 +449,7 @@ However they both result in the same output provided by \verb|metricsCmd|
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap10}\raggedright\small
-\NWtarget{nuweb8a}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{8a}}$\,\rangle\equiv$
+\NWtarget{nuweb8b}{}$\langle\,${\itshape setup}\nobreak\ {\footnotesize{8b}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@app.get("/", &metricsCmd);@\\
@@ -460,7 +460,7 @@ However they both result in the same output provided by \verb|metricsCmd|
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6b}{6b}, \NWlink{nuweb7c}{7c}, \NWlink{nuweb8a}{8a}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6b}{6b}, \NWlink{nuweb8a}{8a}\NWlink{nuweb8b}{b}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
@@ -474,7 +474,7 @@ for values that increase.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap11}\raggedright\small
-\NWtarget{nuweb8b}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{8b}}$\,\rangle\equiv$
+\NWtarget{nuweb8c}{}$\langle\,${\itshape functions}\nobreak\ {\footnotesize{8c}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@void metricsCmd(Request &req, Response &res)@\\
@@ -494,7 +494,7 @@ for values that increase.
 \vspace{-1ex}
 \footnotesize
 \begin{list}{}{\setlength{\itemsep}{-\parsep}\setlength{\itemindent}{-\leftmargin}}
-\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}\NWlink{nuweb6d}{d}, \NWlink{nuweb8b}{8b}.
+\item \NWtxtMacroDefBy\ \NWlink{nuweb6c}{6c}, \NWlink{nuweb7a}{7a}, \NWlink{nuweb8c}{8c}.
 \item \NWtxtMacroRefIn\ \NWlink{nuweb5a}{5a}.
 \end{list}
 \end{minipage}
@@ -508,7 +508,7 @@ before the web server can respond.
 
 \begin{flushleft} \small
 \begin{minipage}{\linewidth}\label{scrap12}\raggedright\small
-\NWtarget{nuweb8c}{}$\langle\,${\itshape loop}\nobreak\ {\footnotesize{8c}}$\,\rangle\equiv$
+\NWtarget{nuweb9}{}$\langle\,${\itshape loop}\nobreak\ {\footnotesize{9}}$\,\rangle\equiv$
 \vspace{-1ex}
 \begin{list}{}{\setlength{\leftmargin}{1em}} \item
 \mbox{}\lstinline@  delay(2000);@\\
@@ -568,17 +568,17 @@ To test the Prometheus end point you can use an ethernet patch cable to connect 
 \begin{itemize}
   \item Assign a manual IP address to the laptop's ethernet connection say 10.0.21.1.
   \item Subnet mask 255.255.255.0.
-  \item Assign a manual IP address to the Arduino's ethernet, say 10.0.21.211.
+  \item Assign a manual IP address to the Arduino's ethernet, say 10.0.21.212.
   \item Subnet mask 255.255.255.0.
   \item Leave the default Gateway empty.
   \item Use an ethernet patch cable to link the two (since 100BaseT onwards it doesn't have to be a special cross over cable).
   \item You should then be able to get your Arduino site up on \url{http://192.168.0.2} from the laptop.
 \end{itemize}
   
-This is the endpoint at \url{http://10.0.21.211/metrics} which should show something like this.
+This is the endpoint at \url{http://10.0.21.212/metrics} which should show something like this.
   
 \begin{verbatim}
-  > curl 10.0.21.211
+  > curl 10.0.21.212
   # HELP temperature is the last temperature reading in degrees celsius
   # TYPE temp gauge
   temperature 23.30

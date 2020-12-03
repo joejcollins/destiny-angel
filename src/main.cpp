@@ -13,7 +13,7 @@ float humidity = 0;
 byte mac[] = {
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
 };
-IPAddress ip(10, 0, 21, 211);
+IPAddress ip(10, 0, 21, 212);
 EthernetServer server(80);
 Application app;
 /*** Functions ***/

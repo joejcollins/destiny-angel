@@ -134,7 +134,7 @@ Tooling:
   \url{https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide}
 \end{itemize}
 
-All Arduino programs have the same format with a \verb|setup()| and \verb|loop()| functions.
+All Arduino programs have the same format with \verb|setup()| and \verb|loop()| functions.
 The \verb|loop()| runs continuously and the \verb|setup()| is run
 when the Arduino is turned on
 or
@@ -282,7 +282,7 @@ as global variables since the \verb|loop()| makes repeated use of them.
 byte mac[] = {
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
 };
-IPAddress ip(10, 0, 21, 211);
+IPAddress ip(10, 0, 21, 212);
 EthernetServer server(80);
 Application app;
 @}
@@ -390,17 +390,17 @@ To test the Prometheus end point you can use an ethernet patch cable to connect 
 \begin{itemize}
   \item Assign a manual IP address to the laptop's ethernet connection say 10.0.21.1.
   \item Subnet mask 255.255.255.0.
-  \item Assign a manual IP address to the Arduino's ethernet, say 10.0.21.211.
+  \item Assign a manual IP address to the Arduino's ethernet, say 10.0.21.212.
   \item Subnet mask 255.255.255.0.
   \item Leave the default Gateway empty.
   \item Use an ethernet patch cable to link the two (since 100BaseT onwards it doesn't have to be a special cross over cable).
   \item You should then be able to get your Arduino site up on \url{http://192.168.0.2} from the laptop.
 \end{itemize}
   
-This is the endpoint at \url{http://10.0.21.211/metrics} which should show something like this.
+This is the endpoint at \url{http://10.0.21.212/metrics} which should show something like this.
   
 \begin{verbatim}
-  > curl 10.0.21.211
+  > curl 10.0.21.212
   # HELP temperature is the last temperature reading in degrees celsius
   # TYPE temp gauge
   temperature 23.30
