@@ -260,7 +260,7 @@ but this approach only allows for one web page and no routing.
 Typically Prometheus expects the metrics to be on a route at \verb|/metrics|.
 Also having routing would give the possibility of having a more friendly webpage showing the readings.
 
-The Arduino web server library\href{https://github.com/lasselukkari/awot}{Arduino web server library}.
+The Arduino web server library \href{https://github.com/lasselukkari/awot}{Arduino web server library}.
 The package downloaded by PlatformIO is marked
 \verb|lasselukkari/aWOT@0.0.0-alpha+sha.bf07e6371c|
 which is curious since the rest of the meta data indicates that it is version 3.0.2
