@@ -277,6 +277,10 @@ This isn't strictly necessary since they are only used once in the \verb|setup()
 but this is the pattern followed by most examples I found so I did the same.
 However it is useful for the \verb|server| and the \verb|app| to be available
 as global variables since the \verb|loop()| makes repeated use of them.
+The MAC address might be written on the ethernet shield,
+but if it isn't you can just make one up (or use an on-line generator).
+Either way the MAC address like the IP address
+should be unique to the device you are making.
 
 @d configuration @{
 byte mac[] = {
