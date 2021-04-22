@@ -9,6 +9,7 @@ Instructions on [how to make it](https://github.com/joejcollins/destiny-angel/bl
 ```
 cd docs
 python nuweb.py -lr how-to-make.w
+python nuweb.py -lr how-to-make.w
 pdflatex how-to-make.tex
 ```
 
