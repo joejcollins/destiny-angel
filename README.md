@@ -11,3 +11,5 @@ cd docs
 python nuweb.py -lr how-to-make.w
 pdflatex how-to-make.tex
 ```
+
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/joejcollins/destiny-angel)
