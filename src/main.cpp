@@ -11,7 +11,7 @@ DHT dht = DHT(DHTPIN, DHTTYPE);
 float temperature = 0;
 float humidity = 0;
 byte mac[] = {
-  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
+  0xF6, 0x54, 0xA8, 0x28, 0xE5, 0xD0
 };
 IPAddress ip(10, 0, 21, 212);
 EthernetServer server(80);

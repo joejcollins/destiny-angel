@@ -134,6 +134,15 @@ Tooling:
   \url{https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide}
 \end{itemize}
 
+The Arduino libraries will need to be installed like this:
+
+\begin{verbatim}
+pio lib install "lasselukkari/aWOT"
+\end{verbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{An Arduino Program}
+
 All Arduino programs have the same format with \verb|setup()| and \verb|loop()| functions.
 The \verb|loop()| runs continuously and the \verb|setup()| is run
 when the Arduino is turned on
@@ -284,7 +293,7 @@ should be unique to the device you are making.
 
 @d configuration @{
 byte mac[] = {
-  0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
+  0xF6, 0x54, 0xA8, 0x28, 0xE5, 0xD0
 };
 IPAddress ip(10, 0, 21, 212);
 EthernetServer server(80);
