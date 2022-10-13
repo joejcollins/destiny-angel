@@ -399,6 +399,12 @@ Additionally the upload was sometimes unreliable.
 It appears that PlatformIO attempts to read back the uploaded file.
 The read back doesn't always work,
 but more often that not the file had been successfully uploaded to the Arduino.
+Tried the Arduino on my Windows laptop.
+Had to install some old drivers to get to Arduino to work.
+This is because there are no proper USB drivers (like CH340) to detect portable devices on COM ports.
+It is documented here \url{https://nagesh-uluvar.blogspot.com/2016/12/arduino-not-getting-detected-usb20.html} 
+but the short answer is to install these drivers \url{https://sites.google.com/site/nageshuluvar/home/DRIVER1_CH340.zip?attredirects=0&d=1}.
+There are versions at \url{https://sparks.gogo.co.nz/ch340.html} for the Mac as well do I could try that from the work computer.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Testing}
